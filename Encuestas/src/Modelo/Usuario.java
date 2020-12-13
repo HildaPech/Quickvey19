@@ -3,6 +3,7 @@ package Modelo;
 public class Usuario {
     protected int iIdUsuario;
     protected int iIdPersona;
+    //protected String cNombrePersona;
     protected String cNombreUsuario;
     protected String cPassword;
     protected int lActivo;
@@ -37,6 +38,10 @@ public class Usuario {
         return this.iIdPersona;
     }
     
+    /*public String getNombrePersona() {
+        return this.cNombrePersona;
+    }*/
+    
     public String getNombreUsuario() {
         return this.cNombreUsuario;
     }
@@ -64,6 +69,10 @@ public class Usuario {
     public void setIdPersona(int iIdPersona) {
         this.iIdPersona = iIdPersona;
     }
+    
+    /*public void setNombrePersona(String cNombrePersona) {
+        this.cNombrePersona = cNombrePersona;
+    }*/
     
     public void setNombreUsuario(String cNombreUsuario) {
         this.cNombreUsuario = cNombreUsuario;

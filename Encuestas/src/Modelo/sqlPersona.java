@@ -38,7 +38,7 @@ public class sqlPersona extends ConexionBD {
             try {
                 link.close();
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e);
+                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -64,14 +64,14 @@ public class sqlPersona extends ConexionBD {
             
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Se ha producido un error en: " + e, "Error de Ejecución", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Se ha producido un error en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             
             return false;
         } finally {
             try {
                 link.close();
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -91,14 +91,14 @@ public class sqlPersona extends ConexionBD {
             
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Se ha producido un error en: " + e, "Error de Ejecución", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Se ha producido un error en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             
             return false;
         } finally {
             try {
                 link.close();
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -118,14 +118,14 @@ public class sqlPersona extends ConexionBD {
             
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Se ha producido un error en: " + e, "Error de Ejecución", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se ha producido un error en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             
             return false;
         } finally {
             try {
                 link.close();
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -160,14 +160,14 @@ public class sqlPersona extends ConexionBD {
             
             return false;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Se ha producido un error en: " + e, "Error de Ejecución", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se ha producido un error en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             
             return false;
         } finally {
             try {
                 link.close();
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

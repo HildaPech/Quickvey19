@@ -10,17 +10,17 @@ public class sqlUsuario extends ConexionBD {
     public boolean registrarUsuario(Usuario usuario) {
         PreparedStatement ps = null;
         Connection link = getConexion();
-        String sql = "INSERT INTO tbl_usuarios (iIdPersona, cNombreUsuario, cPassword, lActivo, dtAlta, dtModificacion) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tbl_usuarios (iIdPersona, cNombreUsuario, cPassword, lActivo, dtAlta, dtModificacion) VALUES ((SELECT MAX(iIdPersona) FROM tbl_personas), ?, ?, ?, ?, ?)";
         
         try {
             ps = link.prepareStatement(sql);
             
-            ps.setInt(1, usuario.getIdPersona());
-            ps.setString(2, usuario.getNombreUsuario());
-            ps.setString(3, usuario.getPassword());
-            ps.setInt(4, usuario.getActivo());
-            ps.setString(5, usuario.getAlta());
-            ps.setString(6, usuario.getModificacion());
+            //ps.setInt(1, usuario.getIdPersona());
+            ps.setString(1, usuario.getNombreUsuario());
+            ps.setString(2, usuario.getPassword());
+            ps.setInt(3, usuario.getActivo());
+            ps.setString(4, usuario.getAlta());
+            ps.setString(5, usuario.getModificacion());
             
             ps.execute();
             
@@ -33,7 +33,7 @@ public class sqlUsuario extends ConexionBD {
             try {
                 link.close();
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e);
+                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -55,14 +55,14 @@ public class sqlUsuario extends ConexionBD {
             
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Se ha producido un error en: " + e, "Error de Ejecución", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Se ha producido un error en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             
             return false;
         } finally {
             try {
                 link.close();
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -83,14 +83,14 @@ public class sqlUsuario extends ConexionBD {
             
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Se ha producido un error en: " + e, "Error de Ejecución", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Se ha producido un error en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             
             return false;
         } finally {
             try {
                 link.close();
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -111,14 +111,14 @@ public class sqlUsuario extends ConexionBD {
             
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Se ha producido un error en: " + e, "Error de Ejecución", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Se ha producido un error en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             
             return false;
         } finally {
             try {
                 link.close();
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -139,14 +139,14 @@ public class sqlUsuario extends ConexionBD {
             
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Se ha producido un error en: " + e, "Error de Ejecución", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se ha producido un error en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             
             return false;
         } finally {
             try {
                 link.close();
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -177,14 +177,55 @@ public class sqlUsuario extends ConexionBD {
             
             return false;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Se ha producido un error en: " + e, "Error de Ejecución", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se ha producido un error en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             
             return false;
         } finally {
             try {
                 link.close();
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error de Conexión", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+    
+    public boolean iniciarSesion(Usuario usuario) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection link = getConexion();
+        String sql = "SELECT iIdUsuario, iIdPersona, cNombreUsuario, cPassword FROM tbl_usuarios WHERE cNombreUsuario = ? AND lActivo = 1";
+        
+        try {
+            ps = link.prepareStatement(sql);
+            
+            ps.setString(1, usuario.getNombreUsuario());
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                if (hash.md5(usuario.getPassword()).equals(rs.getString(4))) {
+                    usuario.setIdUsuario(rs.getInt(1));
+                    usuario.setIdPersona(rs.getInt(2));
+                    usuario.setNombreUsuario(rs.getString(3));
+                    usuario.setPassword(rs.getString(4));
+                    
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            
+            return false;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Se ha producido un error en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+            return false;
+        } finally {
+            try {
+                link.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
