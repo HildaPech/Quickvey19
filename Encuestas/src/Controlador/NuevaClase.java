@@ -10,5 +10,5 @@ package Controlador;
  * @author heyne
  */
 public class NuevaClase {
-    
+    //Nueva Clase
 }
