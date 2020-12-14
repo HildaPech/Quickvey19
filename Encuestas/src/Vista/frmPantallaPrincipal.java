@@ -52,7 +52,6 @@ public class frmPantallaPrincipal extends javax.swing.JFrame {
         opmCambiarPassword = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jMenuBar1.setMinimumSize(new java.awt.Dimension(294, 30));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(294, 30));
@@ -145,19 +144,19 @@ public class frmPantallaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 270, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void opmEncuestasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opmEncuestasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opmEncuestasActionPerformed
-
     private void opmPerfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opmPerfilesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_opmPerfilesActionPerformed
+
+    private void opmEncuestasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opmEncuestasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opmEncuestasActionPerformed
 
     /**
      * @param args the command line arguments

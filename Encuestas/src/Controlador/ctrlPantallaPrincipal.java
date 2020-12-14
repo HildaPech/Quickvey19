@@ -25,7 +25,7 @@ public class ctrlPantallaPrincipal implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == frmPantallaPrincipal.opmResponderEncuesta) {
-            
+            JOptionPane.showMessageDialog(null, "Debe capturar un valor para el campo Nombre del Usuario.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
         if (e.getSource() == frmPantallaPrincipal.opmCerrarSesion) {

@@ -67,6 +67,47 @@ public class sqlUsuario extends ConexionBD {
         }
     }
 
+    public boolean validarPassword(Usuario usuario) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection link = getConexion();
+        String sql = "SELECT cPassword FROM tbl_usuarios WHERE iIdUsuario = ?";
+        
+        try {
+            ps = link.prepareStatement(sql);
+            
+            ps.setString(1, usuario.getNombreUsuario());
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                if (hash.md5(usuario.getPassword()).equals(rs.getString(4))) {
+                    usuario.setIdUsuario(rs.getInt(1));
+                    usuario.setIdPersona(rs.getInt(2));
+                    usuario.setNombreUsuario(rs.getString(3));
+                    usuario.setPassword(rs.getString(4));
+                    
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            
+            return false;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Se ha producido un error en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+            return false;
+        } finally {
+            try {
+                link.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Se ha producido un error de conexion con la base \n de datos en: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+    
     public boolean modificarPassword(Usuario usuario) {
         PreparedStatement ps = null;
         Connection link = getConexion();

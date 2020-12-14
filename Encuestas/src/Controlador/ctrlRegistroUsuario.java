@@ -92,6 +92,7 @@ public class ctrlRegistroUsuario implements ActionListener {
             }
             else if(password1.equals(password2) == false) {
                 JOptionPane.showMessageDialog(null, "Las contraseñas introducidas no coinciden.", "Error", JOptionPane.ERROR_MESSAGE);
+                frmRegistroUsuario.txtPassword1.grabFocus();
             }
             else {
                 persona.setPrimerApellido(frmRegistroUsuario.txtPrimerApellido.getText());
@@ -131,6 +132,8 @@ public class ctrlRegistroUsuario implements ActionListener {
                     limpiarCampos();
                     frmRegistroUsuario.setVisible(false);
                     frmInicioSesion.setVisible(true);
+                    frmInicioSesion.txtNombreUsuario.setText(usuario.getNombreUsuario());
+                    frmInicioSesion.txtPassword.grabFocus();
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "El registro del usuario no fue procesado.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -141,6 +144,7 @@ public class ctrlRegistroUsuario implements ActionListener {
         if (e.getSource() == frmRegistroUsuario.btnCancelar) {
             frmRegistroUsuario.setVisible(false);
             frmInicioSesion.setVisible(true);
+            frmInicioSesion.txtNombreUsuario.grabFocus();
         }
     }
     
@@ -154,29 +158,5 @@ public class ctrlRegistroUsuario implements ActionListener {
         frmRegistroUsuario.txtCorreoElectronico.setText(null);
         frmRegistroUsuario.txtPassword1.setText(null);
         frmRegistroUsuario.txtPassword2.setText(null);
-    }
-    
-    public void inactivarCampos() {
-        frmRegistroUsuario.txtPrimerApellido.setEditable(false);
-        frmRegistroUsuario.txtSegundoApellido.setEditable(false);
-        frmRegistroUsuario.txtNombre.setEditable(false);
-        frmRegistroUsuario.dtFechaNacimiento.setEnabled(false);
-        frmRegistroUsuario.optHombre.setEnabled(false);
-        frmRegistroUsuario.optMujer.setEnabled(false);
-        frmRegistroUsuario.txtCorreoElectronico.setEditable(false);
-        frmRegistroUsuario.txtPassword1.setEditable(false);
-        frmRegistroUsuario.txtPassword2.setEditable(false);
-    }
-    
-    public void activarCampos() {
-        frmRegistroUsuario.txtPrimerApellido.setEditable(true);
-        frmRegistroUsuario.txtSegundoApellido.setEditable(true);
-        frmRegistroUsuario.txtNombre.setEditable(true);
-        frmRegistroUsuario.dtFechaNacimiento.setEnabled(true);
-        frmRegistroUsuario.optHombre.setEnabled(true);
-        frmRegistroUsuario.optMujer.setEnabled(true);
-        frmRegistroUsuario.txtCorreoElectronico.setEditable(true);
-        frmRegistroUsuario.txtPassword1.setEditable(true);
-        frmRegistroUsuario.txtPassword2.setEditable(true);
     }
 }

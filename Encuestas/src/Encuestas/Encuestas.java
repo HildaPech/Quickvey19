@@ -1,7 +1,10 @@
 package Encuestas;
 
+import Controlador.ctrlEncuesta;
 import Controlador.ctrlInicioSesion;
-import Controlador.ctrlPantallaPrincipal;
+import Controlador.ctrlMenuPrincipal;
+import Controlador.ctrlPassword;
+import Controlador.ctrlPerfilUsuario;
 import Controlador.ctrlRegistroUsuario;
 import Modelo.Persona;
 import Modelo.Usuario;
@@ -12,9 +15,11 @@ import Vista.frmCatalogoPreguntas;
 import Vista.frmCatalogoRespuestas;
 import Vista.frmCatalogoUsuarios;
 import Vista.frmCatalogoEncuestas;
+import Vista.frmEncuesta;
 import Vista.frmInicioSesion;
-import Vista.frmPantallaPrincipal;
+import Vista.frmMenuPrincipal;
 import Vista.frmPassword;
+import Vista.frmPerfilUsuario;
 import Vista.frmRegistroUsuario;
 
 public class Encuestas {
@@ -23,16 +28,23 @@ public class Encuestas {
         sqlPersona sqlPersona = new sqlPersona();
         Usuario usuario = new Usuario();
         sqlUsuario sqlUsuario = new sqlUsuario();
-        frmInicioSesion frmInicioSesion = new frmInicioSesion();
-        frmPantallaPrincipal frmPantallaPrincipal = new frmPantallaPrincipal();
-        frmRegistroUsuario frmRegistroUsuario = new frmRegistroUsuario();
-        frmCatalogoUsuarios frmCatalogoUsuarios = new frmCatalogoUsuarios();
+        
+        /*frmCatalogoUsuarios frmCatalogoUsuarios = new frmCatalogoUsuarios();
         frmCatalogoPreguntas frmCatalogoPreguntas = new frmCatalogoPreguntas();
-        frmCatalogoRespuestas frmCatalogoRespuestas = new frmCatalogoRespuestas();
+        frmCatalogoRespuestas frmCatalogoRespuestas = new frmCatalogoRespuestas();*/
+        frmEncuesta frmEncuesta = new frmEncuesta();
+        frmInicioSesion frmInicioSesion = new frmInicioSesion();
+        frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal();
         frmPassword frmPassword = new frmPassword();
-        ctrlPantallaPrincipal ctrlPantallaPrincipal = new ctrlPantallaPrincipal(frmPantallaPrincipal, frmInicioSesion);
+        frmPerfilUsuario frmPerfilUsuario = new frmPerfilUsuario();
+        frmRegistroUsuario frmRegistroUsuario = new frmRegistroUsuario();
+        
+        ctrlPassword ctrlPassword = new ctrlPassword (usuario, sqlUsuario, frmPerfilUsuario, frmPassword);
+        ctrlPerfilUsuario ctrlPerfilUsuario = new ctrlPerfilUsuario(persona, sqlPersona, usuario, sqlUsuario, frmMenuPrincipal, frmPerfilUsuario, frmPassword, ctrlPassword);
+        ctrlEncuesta ctrlEncuesta = new ctrlEncuesta();
+        ctrlMenuPrincipal ctrlMenuPrincipal = new ctrlMenuPrincipal(frmMenuPrincipal, frmPerfilUsuario, frmEncuesta, frmInicioSesion, ctrlPerfilUsuario, ctrlEncuesta);
         ctrlRegistroUsuario ctrlRegistroUsuario = new ctrlRegistroUsuario(persona, sqlPersona, usuario, sqlUsuario, frmRegistroUsuario, frmInicioSesion);
-        ctrlInicioSesion ctrlInicioSesion = new ctrlInicioSesion(usuario, sqlUsuario, frmInicioSesion, frmPantallaPrincipal, frmRegistroUsuario, ctrlPantallaPrincipal, ctrlRegistroUsuario);
+        ctrlInicioSesion ctrlInicioSesion = new ctrlInicioSesion(usuario, sqlUsuario, frmInicioSesion, frmMenuPrincipal, frmRegistroUsuario, ctrlMenuPrincipal, ctrlRegistroUsuario);
         
         ctrlInicioSesion.ejecutarFormuluario();
         frmInicioSesion.setVisible(true);

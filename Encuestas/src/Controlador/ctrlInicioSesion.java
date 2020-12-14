@@ -3,7 +3,7 @@ package Controlador;
 import Modelo.Usuario;
 import Modelo.sqlUsuario;
 import Vista.frmInicioSesion;
-import Vista.frmPantallaPrincipal;
+import Vista.frmMenuPrincipal;
 import Vista.frmRegistroUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,18 +14,18 @@ public class ctrlInicioSesion implements ActionListener {
     private Usuario usuario;
     private sqlUsuario sqlUsuario;
     private frmInicioSesion frmInicioSesion;
-    private frmPantallaPrincipal frmPantallaPrincipal;
+    private frmMenuPrincipal frmMenuPrincipal;
     private frmRegistroUsuario frmRegistroUsuario;
-    private ctrlPantallaPrincipal ctrlPantallaPrincipal;
+    private ctrlMenuPrincipal ctrlMenuPrincipal;
     private ctrlRegistroUsuario ctrlRegistroUsuario;
     
-    public ctrlInicioSesion(Usuario usuario, sqlUsuario sqlUsuario, frmInicioSesion frmInicioSesion, frmPantallaPrincipal frmPantallaPrincipal, frmRegistroUsuario frmRegistroUsuario, ctrlPantallaPrincipal ctrlPantallaPrincipal, ctrlRegistroUsuario ctrlRegistroUsuario) {
+    public ctrlInicioSesion(Usuario usuario, sqlUsuario sqlUsuario, frmInicioSesion frmInicioSesion, frmMenuPrincipal frmMenuPrincipal, frmRegistroUsuario frmRegistroUsuario, ctrlMenuPrincipal ctrlMenuPrincipal, ctrlRegistroUsuario ctrlRegistroUsuario) {
         this.usuario = usuario;
         this.sqlUsuario = sqlUsuario;
         this.frmInicioSesion = frmInicioSesion;
-        this.frmPantallaPrincipal = frmPantallaPrincipal;
+        this.frmMenuPrincipal = frmMenuPrincipal;
         this.frmRegistroUsuario = frmRegistroUsuario;
-        this.ctrlPantallaPrincipal = ctrlPantallaPrincipal;
+        this.ctrlMenuPrincipal = ctrlMenuPrincipal;
         this.ctrlRegistroUsuario = ctrlRegistroUsuario;
         this.frmInicioSesion.btnIniciarSesion.addActionListener(this);
         this.frmInicioSesion.btnCrearCuenta.addActionListener(this);
@@ -58,9 +58,8 @@ public class ctrlInicioSesion implements ActionListener {
                 
                 if (sqlUsuario.iniciarSesion(usuario)) {
                     frmInicioSesion.setVisible(false);
-                    JOptionPane.showMessageDialog(null, "Bienvenido(a) al Sistema de Encuestas \"Quickvey-19\".", "Información", JOptionPane.INFORMATION_MESSAGE);
-                    ctrlPantallaPrincipal.ejecutarFormuluario();
-                    frmPantallaPrincipal.setVisible(true);
+                    ctrlMenuPrincipal.ejecutarFormuluario();
+                    frmMenuPrincipal.setVisible(true);
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "El nombre de usuario y/o la contraseña son incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
