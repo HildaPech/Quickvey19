@@ -9,7 +9,7 @@ import java.awt.Color;
 
 /**
  *
- * @author marlasantos
+ * @author salvador.santos
  */
 public class frmCatalogoPreguntas extends javax.swing.JFrame {
 
