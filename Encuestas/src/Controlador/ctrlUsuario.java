@@ -5,6 +5,7 @@ import Modelo.Usuario;
 import Modelo.sqlPersona;
 import Modelo.sqlUsuario;
 import Vista.frmRegistroUsuario;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ctrlUsuario implements ActionListener {
@@ -20,5 +21,10 @@ public class ctrlUsuario implements ActionListener {
         this.usuario = usuario;
         this.sqlUsuario = sqlUsuario;
         this.frmUsuario = frmUsuario;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

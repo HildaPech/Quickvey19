@@ -32,6 +32,7 @@ public class ctrlRegistroUsuario implements ActionListener {
         this.sqlUsuario = sqlUsuario;
         this.frmRegistroUsuario = frmRegistroUsuario;
         this.frmInicioSesion = frmInicioSesion;
+        this.frmRegistroUsuario.btnCerrar.addActionListener(this);
         this.frmRegistroUsuario.btnGuardar.addActionListener(this);
         this.frmRegistroUsuario.btnCancelar.addActionListener(this);
     }
@@ -43,6 +44,12 @@ public class ctrlRegistroUsuario implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == frmRegistroUsuario.btnCerrar) {
+            frmRegistroUsuario.setVisible(false);
+            frmInicioSesion.setVisible(true);
+            frmInicioSesion.txtNombreUsuario.grabFocus();
+        }
+        
         if (e.getSource() == frmRegistroUsuario.btnGuardar) {
             Date today = new Date();
             

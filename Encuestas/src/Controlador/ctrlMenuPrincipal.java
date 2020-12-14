@@ -43,8 +43,8 @@ public class ctrlMenuPrincipal implements ActionListener {
         }
         
         if (e.getSource() == frmMenuPrincipal.btnEncuesta) {
-            frmEncuesta.setVisible(false);
-            //ctrlEncuesta.ejecutarFormuluario();
+            frmMenuPrincipal.setVisible(false);
+            ctrlEncuesta.ejecutarFormuluario();
             frmEncuesta.setVisible(true);
         }
         

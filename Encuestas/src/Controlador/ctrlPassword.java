@@ -24,6 +24,7 @@ public class ctrlPassword implements ActionListener {
         this.sqlUsuario = sqlUsuario;
         this.frmPassword = frmPassword;
         this.frmPerfilUsuario = frmPerfilUsuario;
+        this.frmPassword.btnCerrar.addActionListener(this);
         this.frmPassword.btnGuardar.addActionListener(this);
         this.frmPassword.btnCancelar.addActionListener(this);
     }
@@ -35,6 +36,11 @@ public class ctrlPassword implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == frmPassword.btnCerrar) {
+            frmPassword.setVisible(false);
+            frmPerfilUsuario.setVisible(true);
+        }
+        
         if (e.getSource() == frmPassword.btnGuardar) {
             Date today = new Date();
             

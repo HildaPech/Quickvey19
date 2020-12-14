@@ -41,7 +41,7 @@ public class Encuestas {
         
         ctrlPassword ctrlPassword = new ctrlPassword (usuario, sqlUsuario, frmPerfilUsuario, frmPassword);
         ctrlPerfilUsuario ctrlPerfilUsuario = new ctrlPerfilUsuario(persona, sqlPersona, usuario, sqlUsuario, frmMenuPrincipal, frmPerfilUsuario, frmPassword, ctrlPassword);
-        ctrlEncuesta ctrlEncuesta = new ctrlEncuesta();
+        ctrlEncuesta ctrlEncuesta = new ctrlEncuesta(frmMenuPrincipal, frmEncuesta);
         ctrlMenuPrincipal ctrlMenuPrincipal = new ctrlMenuPrincipal(frmMenuPrincipal, frmPerfilUsuario, frmEncuesta, frmInicioSesion, ctrlPerfilUsuario, ctrlEncuesta);
         ctrlRegistroUsuario ctrlRegistroUsuario = new ctrlRegistroUsuario(persona, sqlPersona, usuario, sqlUsuario, frmRegistroUsuario, frmInicioSesion);
         ctrlInicioSesion ctrlInicioSesion = new ctrlInicioSesion(usuario, sqlUsuario, frmInicioSesion, frmMenuPrincipal, frmRegistroUsuario, ctrlMenuPrincipal, ctrlRegistroUsuario);
