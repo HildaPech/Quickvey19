@@ -60,9 +60,9 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(580, 440));
         setResizable(false);
 
+        btnPerfil.setBackground(new java.awt.Color(153, 0, 255));
         btnPerfil.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         btnPerfil.setText("Mi Perfil");
 
